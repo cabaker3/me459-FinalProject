@@ -16,8 +16,6 @@ int ascSort(const void* a, const void* b){
 //};
 
 double* merge_ranges(Tasks inArr[], size_t n){
-  //create merge_arr
-  
   //sort array
   qsort(inArr.startT, n, sizeof(double), ascSort);
   
@@ -34,10 +32,13 @@ double* merge_ranges(Tasks inArr[], size_t n){
     }
   }
   
+  //create merge_arr
+  double* merge_arr = malloc(sizeof(double) * temp);
+ 
   //fill merge_array
   for (size_t i = 0; i < temp; i++){
-    merge_arr[i].startT = inArr[i].startT;
-    merge_arr[i].endT = inArr[i].endT;
+    merge_arr[i] = inArr[i].startT;
+    merge_arr[i+1] = inArr[i].endT;
   }
   
   return merge_arr;
