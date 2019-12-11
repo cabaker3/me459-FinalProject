@@ -13,21 +13,21 @@ int main(int argc, char* argv[]) {
   FILE *inFile, *outFile;
   
   inFile = fopen("task_data","r");
-  if (inFile == NULL) 
-  { 
+  if (inFile == NULL) { 
     fprintf(stderr, "File can't be opened.\n"); 
     exit (1); 
   } 
   
   char v;
   int temp = 0;
-  for (v = getc(inFile); v != EOF; v = getc(inFile)) 
-    if (v == '\n')  
+  for (v = getc(inFile); v != EOF; v = getc(inFile)) {
+    if (v == '\n')  {
       temp += 1; 
+    }
+  }
   
   outFile = fopen("task_data_output","w");
-  if (outFile == NULL) 
-  { 
+  if (outFile == NULL) { 
     fprintf(stderr, "File can't be opened.\n"); 
     exit (1); 
   } 
@@ -36,10 +36,10 @@ int main(int argc, char* argv[]) {
   struct Tasks input[temp];
   size_t vals = 0;
   //save contents to array
-  while(fscanf(inFile, "%d, %d", &input[vals].startT, &input[vals].endT) == 2))
+  while (fscanf(inFile, "%d, %d", &input[vals].startT, &input[vals].endT) == 2))
     vals++;
   
-  fclose(inFile); 
+  fclose (inFile); 
   
   //call merge range func
   double* arr = merge_ranges(input, n);
@@ -53,7 +53,9 @@ int main(int argc, char* argv[]) {
   
   fwrite(&output, sizeof(struct task), 1, outFile); 
   
-  fclose(outFile);
+  fclose (outFile);
+  
+  free (arr);
   
   return 0;
 }
