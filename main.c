@@ -12,7 +12,7 @@ struct task
   //int id;
   double startT;
   double endT;
-};
+} Tasks;
 
 int main(int argc, char* argv[]) {
   //read in data
