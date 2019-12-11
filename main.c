@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
   } 
 
   //create array to save task data
-  struct task input[temp];
+  struct Tasks input[temp];
   size_t vals = 0;
   //save contents to array
   while(fscanf(inFile, "%d, %d", &input[vals].startT, &input[vals].endT) == 2))
@@ -42,14 +42,11 @@ int main(int argc, char* argv[]) {
   fclose(inFile); 
   
   //call merge range func
+  double* arr = merge_ranges(input, n);
   
   //convert struct back to regular array
   //send merge range arr to mamt func
-  
-  //apply business rules - see valid records
-    //if mamt > 0 and < 16hrs, then 1 (count it as valid)
-    //else > 16hrs or < 0hrs, then 0 (not valid)
-  //sum valid records
+  double mamt_total = mamt(arr, n);
   
   //write to csv
   struct task output = {};
