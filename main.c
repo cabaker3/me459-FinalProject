@@ -6,13 +6,7 @@
 
 #include "mamt.h"
 #include "merge_ranges.h"
-
-struct task
-{
-  //int id;
-  double startT;
-  double endT;
-} Tasks;
+#include "structs.h"
 
 int main(int argc, char* argv[]) {
   //read in data
