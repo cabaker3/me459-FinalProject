@@ -9,17 +9,14 @@
 
 struct task
 {
-  int id;
+  //int id;
   double startT;
   double endT;
 };
 
 int main(int argc, char* argv[]) {
-  //create array to save task data
-  
   //read in data
   FILE *inFile, *outFile;
-  struct task input;
   
   inFile = fopen("task_data","r");
   if (inFile == NULL) 
@@ -28,6 +25,12 @@ int main(int argc, char* argv[]) {
     exit (1); 
   } 
   
+  char v;
+  int temp = 0;
+  for (v = getc(inFile); v != EOF; v = getc(inFile)) 
+    if (v == '\n')  
+      temp += 1; 
+  
   outFile = fopen("task_data_output","w");
   if (outFile == NULL) 
   { 
@@ -35,8 +38,12 @@ int main(int argc, char* argv[]) {
     exit (1); 
   } 
 
-  while(fread(&input, sizeof(struct task), 1, inFile)) 
-    //save contents to array
+  //create array to save task data
+  struct task input[temp];
+  size_t vals = 0;
+  //save contents to array
+  while(fscanf(inFile, "%d, %d", &input[vals].startT, &input[vals].endT) == 2))
+    vals++;
   
   fclose(inFile); 
   
