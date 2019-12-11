@@ -45,4 +45,4 @@ double* merge_ranges (struct task inArr[], size_t n) {
   free (inArr);
   
   return merge_arr;
-};
+}
