@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
   
   //call merge range func
   
+  //convert struct back to regular array
   //send merge range arr to mamt func
   
   //apply business rules - see valid records
