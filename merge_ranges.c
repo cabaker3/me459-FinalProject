@@ -4,11 +4,7 @@
 //#include <stdbool.h>
 
 #include "merge_ranges.h"
-
-//struct range{
-  //double startT;
-  //double endT;
-//} Range_t;
+#include "structs.h"
 
 int ascSort(const void* a, const void* b){
   return (*int(int* a) - *(int*)b );
