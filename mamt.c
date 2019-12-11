@@ -5,18 +5,24 @@
 
 #define HRS (24)
 
-double* mamt(double* inArr, size_t n){
+double mamt(double* arr, size_t n){
   //dynamically allocate arr
-  double* arr = malloc(sizeof(float) * (n/2));
+  double* arr2 = malloc(sizeof(float) * (n/2));
   double mamt;
+  double mamt_sum = 0.0;
   
   for(size_t i = 0; i < n; i++){
     //calculate mamt (in hours)
-    mamt = abs(inArr[i] - inArr[i+1])*HRS;
-    arr[i] = mamt;
+    mamt = abs(arr[i] - arr[i+1])*HRS;
+    arr2[i] = mamt;
   }
   
-  free(inArr);
+  for(size_t i = 0; i < (n/2); i++){
+    mamt_sum += arr2[i];
+  }
   
-  return arr;
+  free(arr);
+  free(arr2);
+  
+  return mamt_sum;
 }
