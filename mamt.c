@@ -11,6 +11,7 @@ double mamt (double* arr, size_t n) {
   double mamt;
   double mamt_sum = 0.0;
   
+  //loop through array to get task time
   for (size_t i = 0; i < n; i++) {
     //calculate mamt (in hours)
     mamt = abs(arr[i] - arr[i+1])*HRS;
