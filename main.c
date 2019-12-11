@@ -12,12 +12,14 @@ int main(int argc, char* argv[]) {
   //read in data
   FILE *inFile, *outFile;
   
+  //check to see if file can be opened
   inFile = fopen("task_data.csv","r");
   if (inFile == NULL) { 
     fprintf(stderr, "File can't be opened.\n"); 
     exit (1); 
   } 
   
+  //get the number of lines in the file for the size of the array
   char v;
   int temp = 0;
   for (v = getc(inFile); v != EOF; v = getc(inFile)) {
@@ -26,6 +28,7 @@ int main(int argc, char* argv[]) {
     }
   }
   
+  //opening the file to write
   outFile = fopen("task_data_output.csv","w");
   if (outFile == NULL) { 
     fprintf(stderr, "File can't be opened.\n"); 
@@ -39,13 +42,14 @@ int main(int argc, char* argv[]) {
   while (fscanf(inFile, "%d, %d", &input[vals].startT, &input[vals].endT) == 2)
     vals++;
   
+  //close input file
   fclose (inFile); 
   
-  //call merge range func
+  //call merge range func - get a new array of the time overlaps
   double* arr = merge_ranges(input, sizeof(input)/sizeof(*input));
   
   //convert struct back to regular array
-  //send merge range arr to mamt func
+  //send merge range arr to mamt func - get the total task time
   double mamt_total = mamt(arr, vals);
   
   //write to csv
