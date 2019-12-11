@@ -16,5 +16,7 @@ double* mamt(double* inArr, size_t n){
     arr[i] = mamt;
   }
   
+  free(inArr);
+  
   return arr;
 }
