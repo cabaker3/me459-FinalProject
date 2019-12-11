@@ -15,7 +15,7 @@ int ascSort (const void* a, const void* b) {
   //return (t1.startT < t2.startT);
 //};
 
-double* merge_ranges (Tasks inArr[], size_t n) {
+double* merge_ranges (struct task inArr[], size_t n) {
   //sort array
   qsort(inArr.startT, n, sizeof(double), ascSort);
   
