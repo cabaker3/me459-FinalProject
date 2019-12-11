@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "mamt.h"
+#include "structs.h"
 
 #define HRS (24)
 
