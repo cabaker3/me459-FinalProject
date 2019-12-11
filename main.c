@@ -6,7 +6,7 @@
 
 #include "mamt.h"
 #include "merge_ranges.h"
-#include "structs.h"
+#include "structs_def.h"
 
 int main(int argc, char* argv[]) {
   //read in data
