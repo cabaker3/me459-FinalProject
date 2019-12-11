@@ -15,7 +15,7 @@ int ascSort(const void* a, const void* b){
   //return (t1.startT < t2.startT);
 //};
 
-void merge_ranges(Tasks inArr[], size_t n){
+double* merge_ranges(Tasks inArr[], size_t n){
   //create merge_arr
   
   //sort array
@@ -39,4 +39,6 @@ void merge_ranges(Tasks inArr[], size_t n){
     merge_arr[i].startT = inArr[i].startT;
     merge_arr[i].endT = inArr[i].endT;
   }
+  
+  return merge_arr;
 };
