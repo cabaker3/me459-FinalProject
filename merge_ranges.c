@@ -6,7 +6,7 @@
 #include "merge_ranges.h"
 #include "structs.h"
 
-int ascSort(const void* a, const void* b){
+int ascSort (const void* a, const void* b) {
   return (*int(int* a) - *(int*)b );
 };
 
@@ -15,14 +15,14 @@ int ascSort(const void* a, const void* b){
   //return (t1.startT < t2.startT);
 //};
 
-double* merge_ranges(Tasks inArr[], size_t n){
+double* merge_ranges (Tasks inArr[], size_t n) {
   //sort array
   qsort(inArr.startT, n, sizeof(double), ascSort);
   
   //check for time overlaps
   double temp = 0.0;
-  for (size_t i = 0; i < n; i++){
-    if (inArr[temp].endT >= inArr[i].startT){
+  for (size_t i = 0; i < n; i++) {
+    if (inArr[temp].endT >= inArr[i].startT) {
       inArr[temp].endT = max(inArr[temp].endT, inArr[i].endT);
       inArr[temp].startT = max(inArr[temp].startT, inArr[i].startT);
     }
@@ -36,13 +36,13 @@ double* merge_ranges(Tasks inArr[], size_t n){
   double* merge_arr = malloc(sizeof(double) * temp);
  
   //fill merge_array
-  for (size_t i = 0; i < temp; i++){
+  for (size_t i = 0; i < temp; i++) {
     merge_arr[i] = inArr[i].startT;
     merge_arr[i+1] = inArr[i].endT;
   }
   
   //free array memory
-  free(inArr);
+  free (inArr);
   
   return merge_arr;
 };
