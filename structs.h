@@ -1,11 +1,10 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
-struct task
-{
+struct task {
   //int id;
   double startT;
   double endT;
-} Tasks;
+};
 
 #endif
