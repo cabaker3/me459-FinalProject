@@ -41,5 +41,8 @@ double* merge_ranges(Tasks inArr[], size_t n){
     merge_arr[i+1] = inArr[i].endT;
   }
   
+  //free array memory
+  free(inArr);
+  
   return merge_arr;
 };
