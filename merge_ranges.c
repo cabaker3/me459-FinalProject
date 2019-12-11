@@ -4,7 +4,7 @@
 //#include <stdbool.h>
 
 #include "merge_ranges.h"
-#include "structs.h"
+#include "structs_def.h"
 
 int ascSort (const void* a, const void* b) {
   return (*int(int* a) - *(int*)b );
