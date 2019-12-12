@@ -7,7 +7,7 @@ ARCH   	:= -march=native
 
 # Language standard
 CCSTD	:= -std=c99
-CXXSTD	:= -std=c++11
+CC = gcc
 
 # Linker options
 LDOPT 	:= $(OPT)
@@ -24,7 +24,7 @@ debug : $(EXEC)
 all : main
 
 main : main.c merge_ranges.c mamt.c merge_ranges.h mamt.h structs.h structs_def.h task_data.csv
-	gcc main.c merge_ranges.c mamt.c $(WFLAGS) $(OPT) -lm -o main
+	$(CC) main.c merge_ranges.c mamt.c $(WFLAGS) $(OPT) -o main
 
 .PHONY: clean
 clean:
