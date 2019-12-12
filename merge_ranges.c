@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
-//#include <stdbool.h>
 
 #include "merge_ranges.h"
 #include "structs_def.h"
@@ -10,11 +9,6 @@
 int ascSort (const void* a, const void* b) {
   return (*int(int* a) - *(int*)b );
 };
-
-//check to see if there is an overlap
-//bool compareRange(Tasks t1, Tasks t2){
-  //return (t1.startT < t2.startT);
-//};
 
 double* merge_ranges (struct task inArr[], size_t n) {
   //sort array
