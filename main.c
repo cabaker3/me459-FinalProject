@@ -65,6 +65,9 @@ int main(int argc, char* argv[]) {
   
   //fwrite(&output, sizeof(struct task), 1, outFile); 
   
+  printf("Merged Times Length: %0.8f\n", time);
+  printf("Task Calculations Length: %0.8f\n", time1);
+  
   fclose (outFile);
   
   free (arr);
