@@ -10,6 +10,11 @@
 
 #define S2MS (1000)
 
+struct taskOutput {
+  char task;
+  double mamt_time;
+};
+
 int main(int argc, char* argv[]) {
   //read in data
   FILE *inFile, *outFile;
@@ -61,9 +66,12 @@ int main(int argc, char* argv[]) {
   double time1 = ((double)(end1 - start1)) / CLOCKS_PER_SEC * S2MS;
   
   //write to csv
-  //struct task output = {};
+  struct taskOutput *output = malloc(sizeof(struct taskOutput));
   
-  //fwrite(&output, sizeof(struct task), 1, outFile); 
+  output->task = 'A';
+  output->mamt_time = mamt_total;
+  
+  fwrite(&output, sizeof(struct taskOutput), 1, outFile); 
   
   printf("Merged Times Length: %0.8f\n", time);
   printf("Task Calculations Length: %0.8f\n", time1);
