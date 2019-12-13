@@ -3,7 +3,7 @@ from datetime import datetime as dt
 
 def mamt(df):
     day_oamt_dict = pd.DataFrame()
-    ranges = list(zip(df['started_date_x'], df['completed_date_x']))
+    ranges = list(zip(df['Started_Date_x'], df['Completed_Date_x']))
     range2 = list(merge_ranges(ranges))
     val = []
     for a, b in range2:
@@ -27,23 +27,19 @@ def merge_ranges(ranges):
             current_stop = max(current_stop, stop)
     yield current_start, current_stop
     
-#def excel_date(date1):
-#    temp = dt.datetime(1899, 12, 30)    
-#    delta = date1 - temp
-#    return float(delta.days) + (float(delta.seconds) / 86400)
-    
 def Application(oamt):
     #Clean data - get rid of any null values for task code
     tasks=pd.DataFrame(oamt)
     tasks=tasks.dropna(subset=['task_code'],how='any')
     
     #Reformat Date Columns
-    tasks['started_date_x'] = pd.to_datetime(tasks['started_date_x'],format='%Y-%m-%d %H:%M:%S')
-    tasks['completed_date_x'] = pd.to_datetime(tasks['completed_date_x'],format='%Y-%m-%d %H:%M:%S')
+    tasks['Started_Date_x'] = pd.to_datetime(tasks['Started_Date_x'],format='%Y-%m-%d %H:%M:%S')
+    tasks['Completed_Date_x'] = pd.to_datetime(tasks['Completed_Date_x'],format='%Y-%m-%d %H:%M:%S')
     
     #Clean up data - removing any duplicates
     raw_data = {'task_code': tasks['task_code'], 'oamt_barcode': tasks['oamt_barcode']}
-    raw_data.drop_duplicates(subset=['oamt_barcode', 'task_code'], keep='first', inplace=True)
+    t = pd.DataFrame(raw_data)
+    t.drop_duplicates(subset=['oamt_barcode', 'task_code'], keep='first', inplace=True)
     
     #Perform MAMT calculations
     temp = tasks.groupby('oamt_barcode').apply(mamt)
