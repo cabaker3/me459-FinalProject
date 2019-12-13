@@ -1,10 +1,14 @@
 import pandas as pd
 from datetime import datetime as dt
+import timeit
 
 def mamt(df):
     day_oamt_dict = pd.DataFrame()
     ranges = list(zip(df['Started_Date_x'], df['Completed_Date_x']))
+    start_time = timeit.default_timer()
     range2 = list(merge_ranges(ranges))
+    elapsed = (timeit.default_timer() - start_time) * 1000
+    print(elapsed)
     val = []
     for a, b in range2:
         diff = b - a
@@ -42,7 +46,10 @@ def Application(oamt):
     t.drop_duplicates(subset=['oamt_barcode', 'task_code'], keep='first', inplace=True)
     
     #Perform MAMT calculations
+    start_time = timeit.default_timer()
     temp = tasks.groupby('oamt_barcode').apply(mamt)
+    elapsed = (timeit.default_timer() - start_time) * 1000
+    print(elapsed)
     s = pd.Series(temp,index=temp.index)
     
     #Sum task times based on business rules
