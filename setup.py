@@ -9,5 +9,7 @@ setup(
     description='Calculating maintenance task time',
     install_requires=[
         'pandas',
+        'datetime',
+        'timeit',
     ]
 )
